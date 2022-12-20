@@ -69,7 +69,14 @@ function App() {
             <><h1>{val.movieName} - {val.movieReview}</h1>
             <button id="btnDelete" onClick={() => {deleteReview(val.movieName);}}>Delete</button>
 
-            <input type="text" id="updateInput" onChange={(e)=> {setNewReview(e.target.value)}} />
+            <textarea 
+              rows=""
+              columns=""
+              id="updateInput"
+              onChange={(e)=> {
+                setNewReview(e.target.value);
+            }}></textarea>
+            {/* <input type="text" id="updateInput" onChange={(e)=> {setNewReview(e.target.value)}} /> */}
             <button id="btnUpdate" onClick={()=> {updatedReview(val.movieName);}}>Update</button></>
           );
         })}

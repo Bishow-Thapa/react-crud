@@ -5,6 +5,8 @@ const app = express();
 // database
 const mysql = require('mysql');
 
+const path = require('path');
+
 const db = mysql.createPool({
     host: 'localhost',
     user: 'root',
@@ -15,6 +17,9 @@ const db = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}))
+
+// for deploying, we buid our react app and put build folder in server folder as public folder
+app.use(express.static(path.join(__dirname + "/public")))
 
 // READ
 app.get('/api/get', (req, res)=> {
@@ -59,7 +64,7 @@ app.put("/api/update", (req, res)=> {
 
 
 // SERVER PORT running at 3001
-app.listen(3001, ()=> {
+app.listen(5000, ()=> {
     console.log("running on port 3001");
 });
 
